@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CounterButton } from "./CounterButton";
 
 export function Counter() {
     const [count, setCount] = useState(0);
@@ -17,12 +18,13 @@ export function Counter() {
 
     return (
         <>
-            <button onClick={() => incrementCounter(1)}>+</button>
-            <div>{count}</div>
-            <button onClick={() => decrementCounter(1)}>-</button>
-            <div>
-                <button onClick={() => resetCounter()}>Reset</button>
-            </div>
+            <span className="totalCount">{count}</span>
+            <CounterButton by={1} incrementMethod={incrementCounter} decrementMethod={decrementCounter} />
+            <CounterButton by={2} incrementMethod={incrementCounter} decrementMethod={decrementCounter} />
+            <CounterButton by={5} incrementMethod={incrementCounter} decrementMethod={decrementCounter} />
+            <button className="resetButton" onClick={() => resetCounter()}>
+                Reset
+            </button>
         </>
     );
 }
